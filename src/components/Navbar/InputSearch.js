@@ -10,15 +10,20 @@ const InputSearch = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    const keyword = searchRef.current.value;
+    const keyword = searchRef.current.value.trim();
 
+    if (!keyword) {
+      return;
+    }
     router.push(`/search/${keyword}`);
   };
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleSearch(event);
     }
   };
+
   return (
     <div className="relative">
       <input
